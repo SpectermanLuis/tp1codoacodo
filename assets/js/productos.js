@@ -5,6 +5,8 @@ let tarjetasContenedor = document.querySelector("#contenedor_tarjetas");
 let chekboxesContenedor = document.querySelector("#contenedor-checkboxes");
 let listaContenedor = document.querySelector("#contenedor-lista");
 
+
+
 let detalleContenedor = document.querySelector("#contenedor_detalle");
 let novedadesContenedor = document.querySelector("#seccion-novedades");
 let algunosJuegosContenedor = document.querySelector(
@@ -288,6 +290,15 @@ function traerDatosCrud(url) {
     .then((datosApi) => {
       datosObtenidos = datosApi;
       console.log(datosObtenidos);
+
+/*       console.log(listaContenedor)
+      while (listaContenedor.firstChild) {
+        console.log(listaContenedor.firstChild)
+        listaContenedor.removeChild(listaContenedor.firstChild);
+      }
+ */     
+     
+      
       crearMostrarLista(datosObtenidos, listaContenedor);
     })
     .catch((error) => console.log(error));
@@ -295,6 +306,8 @@ function traerDatosCrud(url) {
 
 function crearMostrarLista(juegos, ubicacion) {
   // Iterar a través del JSON de datos
+
+  
   juegos.forEach((juego) => {
     // Crear una nueva fila <tr>
     const nuevaFila = document.createElement("tr");
@@ -596,3 +609,50 @@ function crearMostrarCheckboxes(arregloEventos, ubicacion) {
     ubicacion.innerHTML = checkboxes;
   });
 }
+
+
+// aca va el filtro por lista de crud
+const inputCrud = document.querySelector("#texto_crud");
+
+if (inputCrud) {
+  inputCrud.addEventListener("input", () => {
+    filtroCrud();
+  });
+}
+
+function filtroCrud() {
+  console.log(inputCrud.value) 
+
+  let filtradoPorTexto = filtrarPorTexto(datosObtenidos, inputCrud.value);
+
+  console.log(filtradoPorTexto)
+
+  if (filtradoPorTexto.length === 0) {
+    // Si no hay resultados, muestra el mensaje de notificación.
+    document.getElementById("mensajeNoResultados").style.display = "block";
+  } else {
+    document.getElementById("mensajeNoResultados").style.display = "none";
+  }
+
+    //  let contenedorLista = document.getElementById('contenedor-lista');
+      console.log('Contenedor antes de eliminar:');
+      console.log(listaContenedor);
+    
+      while (listaContenedor.firstChild) {
+        console.log(listaContenedor.firstChild)
+        listaContenedor.removeChild(listaContenedor.firstChild);
+      }
+    
+      console.log('Contenedor después de eliminar:');
+      console.log(listaContenedor);
+
+  crearMostrarLista(filtradoPorTexto, listaContenedor);
+}
+
+function filtrarPorTexto(arregloDeElementos, texto) {
+  let elementosFiltrados = arregloDeElementos.filter((elemento) =>
+    elemento.title.toLowerCase().includes(texto.toLowerCase())
+  );
+  return elementosFiltrados;
+}
+

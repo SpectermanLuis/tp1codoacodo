@@ -50,6 +50,22 @@
     <br>
     <div class="container bg-light p-2 border border-dark rounded">
       <h2>Lista de juegos</h2>
+      
+      <div style="flex: 0.9;height: 40px; align-items: flex-start; padding-top: 0.5rem; padding-left: 3rem ;">
+
+        <div style="display: flex; flex-direction: row;">
+          <input id="texto_crud"
+            style="height: 40px; width: 350px;" type="text" placeholder="Buscar Juego x Nombre">
+        </div>
+  
+        <div id="mensajeNoResultados" style="display: none;">
+          <p>No se encontraron resultados que cumplan con la condición de filtro.</p>
+        </div>
+  
+      </div>
+    
+      
+      
       <table class="table">
         <thead class="table-dark">
           <tr>
@@ -64,46 +80,6 @@
           </tr>
         </thead>
         <tbody id="contenedor-lista">
-<!--           <tr>
-            <th>1</th>
-            <th>Mark</th>
-            <th>Otto</th>
-            <th>@mdo</th>
-            <th>Mark</th>
-            <th>Otto</th>
-            <th>Otto</th>
-            <th>
- -->              <!-- <a href="" class="btn btn-warning">Editar</a> -->
-<!--               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Editar
-              </button>
-              
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Eliminar
-              </button>
- -->
-              <!-- Modal -->
-<!--               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Esta seguro que desea eliminar esta informacion?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Atras</button>
-                      <button type="button" class="btn btn-danger">Eliminar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </th>
-          </tr>
- -->
 
         </tbody>
       </table>
